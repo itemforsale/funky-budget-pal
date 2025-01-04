@@ -4,9 +4,10 @@ import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { PoundSterling, Calculator, Info, Car, Home, CreditCard, Coins, Banknote } from "lucide-react";
+import { PoundSterling, Calculator, Info, Car, Home, CreditCard, Coins, Banknote, FileDown } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { generateLoanPDF } from "@/utils/pdfGenerator";
 
 export const BudgetDashboard = () => {
   // Personal Loan State
@@ -170,13 +171,39 @@ export const BudgetDashboard = () => {
                 </div>
               </div>
 
-              <Button 
-                onClick={() => calculateLoan(loanAmount, interestRate, loanTerm)}
-                className="w-full mt-4 bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 transition-opacity"
-              >
-                <Calculator className="mr-2" />
-                Calculate Personal Loan
-              </Button>
+              <div className="flex gap-2">
+                <Button 
+                  onClick={() => calculateLoan(loanAmount, interestRate, loanTerm)}
+                  className="flex-1 bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 transition-opacity"
+                >
+                  <Calculator className="mr-2" />
+                  Calculate Personal Loan
+                </Button>
+
+                {monthlyPayment && (
+                  <Button
+                    onClick={() => {
+                      generateLoanPDF(
+                        loanAmount,
+                        interestRate,
+                        loanTerm,
+                        monthlyPayment,
+                        totalPayment!,
+                        totalInterest!
+                      );
+                      toast({
+                        title: "PDF Generated! 📄",
+                        description: "Your loan summary has been downloaded.",
+                        className: "bg-secondary text-secondary-foreground",
+                      });
+                    }}
+                    variant="outline"
+                    className="bg-white"
+                  >
+                    <FileDown className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
             </Card>
           </TabsContent>
 
