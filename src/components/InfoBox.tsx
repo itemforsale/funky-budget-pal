@@ -13,7 +13,7 @@ export const InfoBox = () => {
         <div className="flex items-center gap-2">
           <Info className="w-5 h-5 text-primary" />
           <CardTitle className="text-lg font-semibold text-primary">
-            Welcome to Car-Loan.co.uk: Effortless Car Loan Calculations
+            Welcome to Car-Loans.co.uk: Effortless Car Loan Calculations
           </CardTitle>
         </div>
         <Button
@@ -37,11 +37,11 @@ export const InfoBox = () => {
           <ScrollArea className="h-[400px] pr-4">
             <div className="space-y-4 text-left">
               <p>
-                Buying a car is an exciting milestone, but understanding your financing options is crucial to making the right decision. That's where Car-Loan.co.uk comes in—a dedicated platform designed to help you calculate your car loan quickly and accurately.
+                Buying a car is an exciting milestone, but understanding your financing options is crucial to making the right decision. That's where Car-Loans.co.uk comes in—a dedicated platform designed to help you calculate your car loan quickly and accurately.
               </p>
 
               <div className="space-y-2">
-                <h3 className="font-semibold text-primary">How Car-Loan.co.uk Works</h3>
+                <h3 className="font-semibold text-primary">How Car-Loans.co.uk Works</h3>
                 <p>
                   Our powerful car loan calculator simplifies the process of understanding your loan obligations. With just a few details, you can get an instant breakdown of your repayment plan:
                 </p>
@@ -72,7 +72,7 @@ export const InfoBox = () => {
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-semibold text-primary">Why Choose Car-Loan.co.uk?</h3>
+                <h3 className="font-semibold text-primary">Why Choose Car-Loans.co.uk?</h3>
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-medium">Precision & Transparency</h4>
@@ -84,7 +84,7 @@ export const InfoBox = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Tailored for Car Loans</h4>
-                    <p>Unlike generic loan calculators, Car-Loan.co.uk is optimized specifically for car financing, offering calculations that fit the nuances of vehicle loans.</p>
+                    <p>Unlike generic loan calculators, Car-Loans.co.uk is optimized specifically for car financing, offering calculations that fit the nuances of vehicle loans.</p>
                   </div>
                   <div>
                     <h4 className="font-medium">Flexible Options</h4>
@@ -96,14 +96,14 @@ export const InfoBox = () => {
               <div className="space-y-2">
                 <h3 className="font-semibold text-primary">Plan Smart, Drive Smart</h3>
                 <p>
-                  Car-Loan.co.uk is more than just a calculator—it's your roadmap to smarter car financing. By understanding your repayment structure, you can choose the loan that best fits your budget and avoid financial strain.
+                  Car-Loans.co.uk is more than just a calculator—it's your roadmap to smarter car financing. By understanding your repayment structure, you can choose the loan that best fits your budget and avoid financial strain.
                 </p>
               </div>
 
               <div className="space-y-2">
                 <h3 className="font-semibold text-primary">Take the Guesswork Out of Car Financing</h3>
                 <p>
-                  Ready to take control of your car loan? Visit Car-Loan.co.uk now and calculate your car loan in minutes. With just a few clicks, you'll gain the financial clarity you need to drive away with confidence.
+                  Ready to take control of your car loan? Visit Car-Loans.co.uk now and calculate your car loan in minutes. With just a few clicks, you'll gain the financial clarity you need to drive away with confidence.
                 </p>
               </div>
             </div>
