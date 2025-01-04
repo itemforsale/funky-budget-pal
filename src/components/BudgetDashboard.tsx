@@ -4,7 +4,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { PoundSterling, Calculator, Info, Car, Home, CreditCard } from "lucide-react";
+import { PoundSterling, Calculator, Info, Car, Home, CreditCard, Coins, Banknote } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -82,6 +82,11 @@ export const BudgetDashboard = () => {
           Loan Calculator
         </span>
         <div className="mt-4">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Coins className="w-8 h-8 text-primary animate-bounce" />
+            <Banknote className="w-8 h-8 text-secondary animation-delay-2000 animate-bounce" />
+            <PoundSterling className="w-8 h-8 text-accent animation-delay-4000 animate-bounce" />
+          </div>
           <h1 className="text-4xl font-black bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent transform hover:scale-105 transition-all duration-700 cursor-pointer">
             Loan-Calculator.co.uk
           </h1>
