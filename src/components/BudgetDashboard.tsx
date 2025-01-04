@@ -74,13 +74,20 @@ export const BudgetDashboard = () => {
           <div className="space-y-2">
             <Label>Select Currency</Label>
             <Select value={currency} onValueChange={setCurrency}>
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full hover:bg-muted/50 transition-colors">
                 <SelectValue placeholder="Select currency" />
               </SelectTrigger>
               <SelectContent>
                 {currencies.map((cur) => (
-                  <SelectItem key={cur.code} value={cur.code}>
-                    {cur.symbol} {cur.code}
+                  <SelectItem 
+                    key={cur.code} 
+                    value={cur.code}
+                    className="hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer data-[state=checked]:bg-primary/20 data-[state=checked]:text-primary font-medium"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="font-bold">{cur.symbol}</span>
+                      {cur.code}
+                    </span>
                   </SelectItem>
                 ))}
               </SelectContent>
