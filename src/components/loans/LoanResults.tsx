@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Info } from "lucide-react";
+import { Info, Car } from "lucide-react";
 
 interface LoanResultsProps {
   monthlyPayment: number | null;
@@ -27,6 +27,9 @@ export const LoanResults = ({ monthlyPayment, totalInterest, totalPayment }: Loa
                 <p className="text-sm text-muted-foreground">Total Payment</p>
                 <p className="text-xl font-bold text-accent">£{totalPayment?.toFixed(2)}</p>
               </div>
+            </div>
+            <div className="flex justify-center mt-4">
+              <Car className="w-12 h-12 text-primary animate-spin-slow" />
             </div>
           </div>
         )}
