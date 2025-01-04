@@ -78,10 +78,7 @@ export const BudgetDashboard = () => {
   return (
     <div className="container mx-auto p-6 space-y-8">
       <div className="text-center space-y-2">
-        <span className="px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-          Loan Calculator
-        </span>
-        <div className="mt-4">
+        <div>
           <div className="flex items-center justify-center gap-2 mb-4">
             <Coins className="w-8 h-8 text-primary animate-bounce" />
             <Banknote className="w-8 h-8 text-secondary animation-delay-2000 animate-bounce" />
