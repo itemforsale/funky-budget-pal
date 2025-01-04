@@ -13,6 +13,22 @@ const currencies = [
   { code: "EUR", symbol: "€" },
   { code: "GBP", symbol: "£" },
   { code: "JPY", symbol: "¥" },
+  { code: "AUD", symbol: "A$" },
+  { code: "CAD", symbol: "C$" },
+  { code: "CHF", symbol: "CHF" },
+  { code: "CNY", symbol: "¥" },
+  { code: "HKD", symbol: "HK$" },
+  { code: "NZD", symbol: "NZ$" },
+  { code: "SEK", symbol: "kr" },
+  { code: "KRW", symbol: "₩" },
+  { code: "SGD", symbol: "S$" },
+  { code: "NOK", symbol: "kr" },
+  { code: "MXN", symbol: "$" },
+  { code: "INR", symbol: "₹" },
+  { code: "RUB", symbol: "₽" },
+  { code: "ZAR", symbol: "R" },
+  { code: "BRL", symbol: "R$" },
+  { code: "AED", symbol: "د.إ" },
 ];
 
 export const BudgetDashboard = () => {
