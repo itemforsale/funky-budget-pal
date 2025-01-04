@@ -31,8 +31,8 @@ export const LoanResults = ({ monthlyPayment, totalInterest, totalPayment }: Loa
             <div className="flex flex-col items-center justify-center mt-4 space-y-2">
               <div className="relative w-32 h-20">
                 <img
-                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNMzk5LjkgMTY4LjJjLTEuMS0xLjQtMi4yLTIuOC0zLjQtNC4xbC00OC41LTQ4LjVjLTI1LjEtMjUuMS02NS41LTI3LjQtOTMuMS01LjZMMTU2LjIgMjA3LjNjLTIwLjggMTYuNi0zMi44IDQxLjUtMzIuOCA2Ny45djEwMy42YzAgMTcuNyAxNC4zIDMyIDMyIDMyaDMyMGMxNy43IDAgMzItMTQuMyAzMi0zMlYyNzUuMWMwLTI2LjQtMTItNTEuMi0zMi44LTY3LjlsLTc2LjctMzkuMXpNMzM0LjQgMzM2YzAgMjMuNi0xOS4xIDQyLjctNDIuNyA0Mi43cy00Mi43LTE5LjEtNDIuNy00Mi43czE5LjEtNDIuNyA0Mi43LTQyLjdzNDIuNyAxOS4xIDQyLjcgNDIuN3pNMTYwIDM2OGMtMTcuNyAwLTMyLTE0LjMtMzItMzJzMTQuMy0zMiAzMi0zMnMzMiAxNC4zIDMyIDMycy0xNC4zIDMyLTMyIDMyeiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+"
-                  alt="Fast Car"
+                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNMzg0IDY0SDEyOGMtMTcuNyAwLTMyIDE0LjMtMzIgMzJ2MzIwYzAgMTcuNyAxNC4zIDMyIDMyIDMyaDI1NmMxNy43IDAgMzItMTQuMyAzMi0zMlY5NmMwLTE3LjctMTQuMy0zMi0zMi0zMnptLTY0IDMyMEgxOTJWMjg4aDEyOHY5NnptMC0xMjhIMTkyVjE2MGgxMjh2OTZ6TTMyMCA5NkgxOTJ2LTMyaDEyOHYzMnoiIGZpbGw9ImN1cnJlbnRDb2xvciIvPjxwYXRoIGQ9Ik00NDggOTZIMzg0djMyaDY0djMyMEgzODR2MzJoNjRjMTcuNyAwIDMyLTE0LjMgMzItMzJWMTI4YzAtMTcuNy0xNC4zLTMyLTMyLTMyeiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+"
+                  alt="Luxury Car"
                   className="w-full h-full object-contain animate-float text-primary"
                 />
               </div>
