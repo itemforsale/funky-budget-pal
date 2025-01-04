@@ -30,7 +30,7 @@ export const LoanResults = ({ monthlyPayment, totalInterest, totalPayment }: Loa
             </div>
             <div className="flex flex-col items-center justify-center mt-4">
               <span className="text-2xl font-bold text-primary bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                car-loan.co.uk
+                car-loans.co.uk
               </span>
             </div>
           </div>
