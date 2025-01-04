@@ -3,17 +3,28 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { PoundSterling, Calculator } from "lucide-react";
+import { PoundSterling, Calculator, FileDown } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
+import { generateCarLoanPDF } from "@/utils/pdfGenerator";
+import { useToast } from "@/components/ui/use-toast";
 
 interface CarLoanCalculatorProps {
   onCalculate: (amount: string, rate: string, term: string) => void;
+  monthlyPayment?: number | null;
+  totalPayment?: number | null;
+  totalInterest?: number | null;
 }
 
-export const CarLoanCalculator = ({ onCalculate }: CarLoanCalculatorProps) => {
+export const CarLoanCalculator = ({ 
+  onCalculate,
+  monthlyPayment,
+  totalPayment,
+  totalInterest
+}: CarLoanCalculatorProps) => {
   const [carLoanAmount, setCarLoanAmount] = useState("15000");
   const [carInterestRate, setCarInterestRate] = useState("4.9");
   const [carLoanTerm, setCarLoanTerm] = useState("5");
+  const { toast } = useToast();
 
   const handleSliderChange = (value: number[], type: string) => {
     if (type === 'amount') setCarLoanAmount(value[0].toString());
@@ -81,13 +92,39 @@ export const CarLoanCalculator = ({ onCalculate }: CarLoanCalculatorProps) => {
         </div>
       </div>
 
-      <Button 
-        onClick={() => onCalculate(carLoanAmount, carInterestRate, carLoanTerm)}
-        className="w-full mt-4 bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 transition-opacity"
-      >
-        <Calculator className="mr-2" />
-        Calculate Car Loan
-      </Button>
+      <div className="flex gap-2">
+        <Button 
+          onClick={() => onCalculate(carLoanAmount, carInterestRate, carLoanTerm)}
+          className="flex-1 bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 transition-opacity"
+        >
+          <Calculator className="mr-2" />
+          Calculate Car Loan
+        </Button>
+
+        {monthlyPayment && (
+          <Button
+            onClick={() => {
+              generateCarLoanPDF(
+                carLoanAmount,
+                carInterestRate,
+                carLoanTerm,
+                monthlyPayment,
+                totalPayment!,
+                totalInterest!
+              );
+              toast({
+                title: "PDF Generated! 📄",
+                description: "Your car loan summary has been downloaded.",
+                className: "bg-secondary text-secondary-foreground",
+              });
+            }}
+            variant="outline"
+            className="bg-white"
+          >
+            <FileDown className="h-4 w-4" />
+          </Button>
+        )}
+      </div>
     </Card>
   );
 };

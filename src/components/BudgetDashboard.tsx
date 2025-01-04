@@ -57,7 +57,12 @@ export const BudgetDashboard = () => {
       <InfoBox />
 
       <div className="grid md:grid-cols-2 gap-6 mt-6">
-        <CarLoanCalculator onCalculate={calculateLoan} />
+        <CarLoanCalculator 
+          onCalculate={calculateLoan}
+          monthlyPayment={monthlyPayment}
+          totalPayment={totalPayment}
+          totalInterest={totalInterest}
+        />
         <LoanResults
           monthlyPayment={monthlyPayment}
           totalInterest={totalInterest}
