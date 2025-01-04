@@ -7,6 +7,12 @@ import { PoundSterling, Calculator, FileDown } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { generateCarLoanPDF } from "@/utils/pdfGenerator";
 import { useToast } from "@/components/ui/use-toast";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface CarLoanCalculatorProps {
   onCalculate: (amount: string, rate: string, term: string) => void;
@@ -102,27 +108,36 @@ export const CarLoanCalculator = ({
         </Button>
 
         {monthlyPayment && (
-          <Button
-            onClick={() => {
-              generateCarLoanPDF(
-                carLoanAmount,
-                carInterestRate,
-                carLoanTerm,
-                monthlyPayment,
-                totalPayment!,
-                totalInterest!
-              );
-              toast({
-                title: "PDF Generated! 📄",
-                description: "Your car loan summary has been downloaded.",
-                className: "bg-secondary text-secondary-foreground",
-              });
-            }}
-            variant="outline"
-            className="bg-white"
-          >
-            <FileDown className="h-4 w-4" />
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  onClick={() => {
+                    generateCarLoanPDF(
+                      carLoanAmount,
+                      carInterestRate,
+                      carLoanTerm,
+                      monthlyPayment,
+                      totalPayment!,
+                      totalInterest!
+                    );
+                    toast({
+                      title: "PDF Generated! 📄",
+                      description: "Your car loan summary has been downloaded.",
+                      className: "bg-secondary text-secondary-foreground",
+                    });
+                  }}
+                  variant="outline"
+                  className="bg-white"
+                >
+                  <FileDown className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Click on the PDF below to print a copy for yourself.</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         )}
       </div>
     </Card>
