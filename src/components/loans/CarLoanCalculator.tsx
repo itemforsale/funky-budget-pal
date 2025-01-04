@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { PoundSterling, Calculator, FileDown } from "lucide-react";
+import { PoundSterling, Calculator, FileDown, Github } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { generateCarLoanPDF } from "@/utils/pdfGenerator";
 import { useToast } from "@/components/ui/use-toast";
@@ -139,6 +139,14 @@ export const CarLoanCalculator = ({
             </Tooltip>
           </TooltipProvider>
         )}
+
+        <Button
+          variant="outline"
+          className="bg-white"
+          onClick={() => window.open('https://github.com/car-loans-uk/calculator', '_blank')}
+        >
+          <Github className="h-4 w-4" />
+        </Button>
       </div>
     </Card>
   );
