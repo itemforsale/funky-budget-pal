@@ -41,7 +41,7 @@ export const BudgetDashboard = () => {
 
   return (
     <div className="container mx-auto p-6 space-y-8">
-      <div className="text-center space-y-2 relative">
+      <div className="text-center space-y-2">
         <span className="px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
           Loan Calculator
         </span>
@@ -50,16 +50,6 @@ export const BudgetDashboard = () => {
             Loan-Calculator.co.uk
           </h1>
           <div className="h-1 w-48 mx-auto mt-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-full"></div>
-          
-          {/* Money symbols floating animation */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <span className="absolute text-primary animate-float text-2xl" style={{ left: '20%', animationDelay: '0s' }}>💰</span>
-            <span className="absolute text-secondary animate-float text-2xl" style={{ left: '40%', animationDelay: '1s' }}>💸</span>
-            <span className="absolute text-accent animate-float text-2xl" style={{ left: '60%', animationDelay: '2s' }}>💵</span>
-            <span className="absolute text-primary animate-float text-2xl" style={{ left: '80%', animationDelay: '3s' }}>💰</span>
-            <span className="absolute text-secondary animate-float animation-delay-2000 text-2xl" style={{ left: '30%' }}>💸</span>
-            <span className="absolute text-accent animation-delay-4000 animate-float text-2xl" style={{ left: '70%' }}>💵</span>
-          </div>
         </div>
         <p className="text-muted-foreground">Calculate your loan payments in GBP</p>
       </div>
