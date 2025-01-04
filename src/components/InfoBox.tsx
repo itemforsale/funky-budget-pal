@@ -8,68 +8,80 @@ export const InfoBox = () => {
       <CardHeader className="flex flex-row items-center gap-2">
         <Info className="w-5 h-5 text-primary" />
         <CardTitle className="text-lg font-semibold text-primary">
-          Discover the Power of Loan-Calculator.co.uk: Your Ultimate Loan Solution
+          Welcome to Car-Loan.co.uk: Effortless Car Loan Calculations at Your Fingertips
         </CardTitle>
       </CardHeader>
       <CardContent>
         <ScrollArea className="h-[400px] pr-4">
           <div className="space-y-4 text-left">
             <p>
-              When it comes to managing your finances, understanding your loan commitments is crucial. That's where Loan-Calculator.co.uk comes in—a simple, intuitive, and powerful tool designed to help you calculate any type of loan with ease and accuracy.
+              Buying a car is an exciting milestone, but understanding your financing options is crucial to making the right decision. That's where Car-Loan.co.uk comes in—a dedicated platform designed to help you calculate your car loan quickly and accurately.
             </p>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-primary">How It Works</h3>
+              <h3 className="font-semibold text-primary">How Car-Loan.co.uk Works</h3>
               <p>
-                Loan-Calculator.co.uk is built to simplify your financial decisions. Whether you're planning to take out a personal loan, car loan, mortgage, or business loan, this platform ensures you have all the information you need to make an informed choice. Here's how it works:
+                Our powerful car loan calculator simplifies the process of understanding your loan obligations. With just a few details, you can get an instant breakdown of your repayment plan:
               </p>
             </div>
 
             <div className="space-y-2">
-              <h4 className="font-medium">Enter Your Loan Details</h4>
+              <h4 className="font-medium">Enter Loan Details</h4>
               <p>
-                Input the loan amount, interest rate, and repayment term. You can also adjust the frequency of repayments (monthly, quarterly, or annually) to suit your needs.
+                Provide the car loan amount, interest rate, and repayment period. Adjust repayment frequency (monthly, bi-weekly, or annually) based on your preferences.
               </p>
             </div>
 
             <div className="space-y-2">
-              <h4 className="font-medium">Get Instant Results</h4>
-              <p>In seconds, the calculator provides a detailed breakdown of:</p>
+              <h4 className="font-medium">Instant Breakdown</h4>
+              <p>Our calculator provides you with:</p>
               <ul className="list-disc list-inside pl-4 space-y-1">
-                <li>Your monthly repayment amounts.</li>
-                <li>The total cost of the loan, including interest.</li>
-                <li>How much interest you'll pay over the life of the loan.</li>
+                <li>The monthly payment amount.</li>
+                <li>Total interest payable.</li>
+                <li>The full cost of the loan over the repayment period.</li>
               </ul>
             </div>
 
             <div className="space-y-2">
-              <h4 className="font-medium">Compare Loan Options</h4>
+              <h4 className="font-medium">Compare Options</h4>
               <p>
-                Use the tool to compare different loan scenarios. Adjust variables like the loan amount or repayment term to see how changes impact your repayment schedule and overall cost.
+                Experiment with different loan amounts, interest rates, and terms to see how adjustments impact your repayment plan.
               </p>
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-primary">Why Choose Loan-Calculator.co.uk?</h3>
-              <ul className="list-disc list-inside pl-4 space-y-1">
-                <li><span className="font-medium">Accuracy You Can Trust:</span> With precise algorithms, you'll always get reliable calculations tailored to your input.</li>
-                <li><span className="font-medium">User-Friendly Design:</span> The platform is simple and intuitive, making it accessible for everyone, whether you're a financial expert or a first-time borrower.</li>
-                <li><span className="font-medium">No Hidden Fees:</span> Unlike some services, Loan-Calculator.co.uk is completely transparent—what you see is what you get.</li>
-                <li><span className="font-medium">Versatile Applications:</span> From mortgages and car loans to small personal loans, this calculator works across all types of borrowing.</li>
-              </ul>
+              <h3 className="font-semibold text-primary">Why Choose Car-Loan.co.uk?</h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-medium">Precision & Transparency</h4>
+                  <p>Our calculator ensures accurate results, giving you the confidence to make informed financial decisions without any hidden surprises.</p>
+                </div>
+                <div>
+                  <h4 className="font-medium">Ease of Use</h4>
+                  <p>With a clean, user-friendly interface, calculating your car loan is simple—even for first-time users.</p>
+                </div>
+                <div>
+                  <h4 className="font-medium">Tailored for Car Loans</h4>
+                  <p>Unlike generic loan calculators, Car-Loan.co.uk is optimized specifically for car financing, offering calculations that fit the nuances of vehicle loans.</p>
+                </div>
+                <div>
+                  <h4 className="font-medium">Flexible Options</h4>
+                  <p>Whether you're considering a new car, a used vehicle, or refinancing an existing car loan, our tool adapts to your needs.</p>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-primary">Plan Smarter, Borrow Smarter</h3>
+              <h3 className="font-semibold text-primary">Plan Smart, Drive Smart</h3>
               <p>
-                One of the standout features of Loan-Calculator.co.uk is its ability to empower users to plan ahead. Whether you're deciding if you can afford a larger loan or finding ways to reduce your interest payments, this tool provides the clarity you need.
+                Car-Loan.co.uk is more than just a calculator—it's your roadmap to smarter car financing. By understanding your repayment structure, you can choose the loan that best fits your budget and avoid financial strain.
               </p>
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-primary">Take Control of Your Finances Today</h3>
+              <h3 className="font-semibold text-primary">Take the Guesswork Out of Car Financing</h3>
               <p>
-                Your financial journey deserves the right tools to guide you. Visit Loan-Calculator.co.uk today and experience a smarter, stress-free way to manage your loans. With just a few clicks, you'll gain valuable insights that help you take control of your borrowing and build a stronger financial future.
+                Ready to take control of your car loan? Visit Car-Loan.co.uk now and calculate your car loan in minutes. With just a few clicks, you'll gain the financial clarity you need to drive away with confidence.
               </p>
             </div>
           </div>
