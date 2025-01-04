@@ -43,14 +43,14 @@ export const BudgetDashboard = () => {
   return (
     <div className="container mx-auto p-6 space-y-8">
       <div className="text-center space-y-2">
+        <h2 className="text-2xl font-semibold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+          Calculate Your Car Loan
+        </h2>
         <div className="flex items-center justify-center gap-2 mb-4">
           <Car className="w-8 h-8 text-primary animate-bounce" />
           <Banknote className="w-8 h-8 text-secondary animation-delay-2000 animate-bounce" />
           <PoundSterling className="w-8 h-8 text-accent animation-delay-4000 animate-bounce" />
         </div>
-        <h2 className="text-2xl font-semibold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-          Calculate Your Car Loan
-        </h2>
         <div className="h-1 w-48 mx-auto mt-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-full"></div>
       </div>
 
