@@ -6,6 +6,7 @@ import { PersonalLoanCalculator } from "./loans/PersonalLoanCalculator";
 import { CarLoanCalculator } from "./loans/CarLoanCalculator";
 import { MortgageCalculator } from "./loans/MortgageCalculator";
 import { LoanResults } from "./loans/LoanResults";
+import { InfoBox } from "./InfoBox";
 
 export const BudgetDashboard = () => {
   const [monthlyPayment, setMonthlyPayment] = useState<number | null>(null);
@@ -51,13 +52,11 @@ export const BudgetDashboard = () => {
             <Banknote className="w-8 h-8 text-secondary animation-delay-2000 animate-bounce" />
             <PoundSterling className="w-8 h-8 text-accent animation-delay-4000 animate-bounce" />
           </div>
-          <h1 className="text-4xl font-black bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent transform hover:scale-105 transition-all duration-700 cursor-pointer">
-            Loan-Calculator.co.uk
-          </h1>
           <div className="h-1 w-48 mx-auto mt-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-full"></div>
         </div>
-        <p className="text-muted-foreground">Calculate your loan payments in GBP</p>
       </div>
+
+      <InfoBox />
 
       <Tabs defaultValue="personal" className="w-full">
         <TabsList className="grid grid-cols-3 w-full">
