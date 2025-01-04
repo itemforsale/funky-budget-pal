@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
-import { DollarSign, ShoppingCart, Wallet } from "lucide-react";
+import { ShoppingCart, Wallet } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface BudgetChartProps {
@@ -15,27 +15,6 @@ export const BudgetChart = ({ income, expenses }: BudgetChartProps) => {
   ];
 
   const COLORS = ["#EF4444", "#10B981"];
-
-  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index, payload }: any) => {
-    const RADIAN = Math.PI / 180;
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
-    const IconComponent = data[index].icon;
-
-    return (
-      <g className="animate-fade-in">
-        <foreignObject
-          x={x - 12}
-          y={y - 12}
-          width={24}
-          height={24}
-        >
-          <IconComponent className="text-white" size={24} />
-        </foreignObject>
-      </g>
-    );
-  };
 
   const CustomLegend = ({ payload }: any) => {
     return (
@@ -77,7 +56,6 @@ export const BudgetChart = ({ income, expenses }: BudgetChartProps) => {
             outerRadius={120}
             paddingAngle={5}
             dataKey="value"
-            label={renderCustomizedLabel}
             labelLine={false}
           >
             {data.map((entry, index) => (
