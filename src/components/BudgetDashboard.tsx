@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import { Car, Home, CreditCard, Coins, Banknote, PoundSterling } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { PersonalLoanCalculator } from "./loans/PersonalLoanCalculator";
+import { Car, Coins, Banknote, PoundSterling } from "lucide-react";
 import { CarLoanCalculator } from "./loans/CarLoanCalculator";
-import { MortgageCalculator } from "./loans/MortgageCalculator";
 import { LoanResults } from "./loans/LoanResults";
 import { InfoBox } from "./InfoBox";
 
@@ -48,7 +45,7 @@ export const BudgetDashboard = () => {
       <div className="text-center space-y-2">
         <div>
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Coins className="w-8 h-8 text-primary animate-bounce" />
+            <Car className="w-8 h-8 text-primary animate-bounce" />
             <Banknote className="w-8 h-8 text-secondary animation-delay-2000 animate-bounce" />
             <PoundSterling className="w-8 h-8 text-accent animation-delay-4000 animate-bounce" />
           </div>
@@ -58,47 +55,14 @@ export const BudgetDashboard = () => {
 
       <InfoBox />
 
-      <Tabs defaultValue="personal" className="w-full">
-        <TabsList className="grid grid-cols-3 w-full">
-          <TabsTrigger value="personal" className="data-[state=active]:bg-primary/20">
-            <CreditCard className="mr-2" />
-            Personal Loan
-          </TabsTrigger>
-          <TabsTrigger value="car" className="data-[state=active]:bg-primary/20">
-            <Car className="mr-2" />
-            Car Loan
-          </TabsTrigger>
-          <TabsTrigger value="mortgage" className="data-[state=active]:bg-primary/20">
-            <Home className="mr-2" />
-            Mortgage
-          </TabsTrigger>
-        </TabsList>
-
-        <div className="grid md:grid-cols-2 gap-6 mt-6">
-          <TabsContent value="personal">
-            <PersonalLoanCalculator
-              onCalculate={calculateLoan}
-              monthlyPayment={monthlyPayment}
-              totalPayment={totalPayment}
-              totalInterest={totalInterest}
-            />
-          </TabsContent>
-
-          <TabsContent value="car">
-            <CarLoanCalculator onCalculate={calculateLoan} />
-          </TabsContent>
-
-          <TabsContent value="mortgage">
-            <MortgageCalculator onCalculate={calculateLoan} />
-          </TabsContent>
-
-          <LoanResults
-            monthlyPayment={monthlyPayment}
-            totalInterest={totalInterest}
-            totalPayment={totalPayment}
-          />
-        </div>
-      </Tabs>
+      <div className="grid md:grid-cols-2 gap-6 mt-6">
+        <CarLoanCalculator onCalculate={calculateLoan} />
+        <LoanResults
+          monthlyPayment={monthlyPayment}
+          totalInterest={totalInterest}
+          totalPayment={totalPayment}
+        />
+      </div>
     </div>
   );
 };
