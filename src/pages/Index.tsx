@@ -1,6 +1,6 @@
 import { BudgetDashboard } from "@/components/BudgetDashboard";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+import { Mail, Github } from "lucide-react";
 
 const Index = () => {
   return (
@@ -21,6 +21,14 @@ const Index = () => {
             >
               <Mail className="mr-2 h-4 w-4" />
               Buy this site
+            </Button>
+            <Button
+              variant="outline"
+              className="bg-white hover:bg-secondary/10"
+              onClick={() => window.open('https://github.com/itemforsale/funky-budget-pal', '_blank')}
+            >
+              <Github className="mr-2 h-4 w-4" />
+              View on GitHub
             </Button>
           </div>
         </div>
