@@ -47,7 +47,7 @@ export const BudgetDashboard = () => {
         </span>
         <div className="mt-4">
           <h1 className="text-4xl font-black bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent transform hover:scale-105 transition-all duration-700 cursor-pointer">
-            loan-planning.com
+            Loan-Calculator.co.uk
           </h1>
           <div className="h-1 w-48 mx-auto mt-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-full"></div>
           
