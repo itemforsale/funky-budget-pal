@@ -45,10 +45,42 @@ export const BudgetDashboard = () => {
     setExpenses(newExpenses);
   };
 
+  const getPersonalizedAdvice = (income: number, totalExpenses: number) => {
+    const balance = income - totalExpenses;
+    const expenseRatio = (totalExpenses / income) * 100;
+    
+    let advice = [];
+    
+    if (expenseRatio > 80) {
+      advice.push("Your expenses are quite high relative to your income. Consider reviewing non-essential expenses to improve your financial health.");
+    } else if (expenseRatio < 50) {
+      advice.push("Great job keeping expenses low! Consider investing or saving the surplus for future goals.");
+    }
+
+    if (balance < 0) {
+      advice.push("Warning: You're currently in a deficit. Look for ways to increase income or reduce expenses.");
+    } else if (balance > income * 0.3) {
+      advice.push("You have a healthy savings rate. Consider investing in retirement accounts or emergency funds.");
+    }
+
+    if (expenses.length === 0) {
+      advice.push("Try adding your regular expenses to get a better picture of your budget.");
+    }
+
+    return advice.join("\n");
+  };
+
   const handleExportPDF = () => {
+    const advice = getPersonalizedAdvice(Number(income), totalExpenses);
+    toast({
+      title: "Budget Analysis",
+      description: advice,
+      duration: 5000,
+    });
+    
     toast({
       title: "Coming Soon",
-      description: "PDF export functionality will be available in the next update!",
+      description: "PDF export with personalized advice will be available in the next update!",
       duration: 3000,
     });
   };
