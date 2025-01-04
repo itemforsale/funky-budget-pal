@@ -1,12 +1,10 @@
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
-import { PlusCircle, Download, DollarSign } from "lucide-react";
-import { BudgetChart } from "./BudgetChart";
 import { useToast } from "@/components/ui/use-toast";
+import { CurrencySelector } from "./budget/CurrencySelector";
+import { IncomeInput } from "./budget/IncomeInput";
+import { ExpensesList } from "./budget/ExpensesList";
+import { BudgetSummary } from "./budget/BudgetSummary";
 
 const currencies = [
   { code: "USD", symbol: "$" },
@@ -48,7 +46,6 @@ export const BudgetDashboard = () => {
   };
 
   const handleExportPDF = () => {
-    // TODO: Implement PDF export
     toast({
       title: "Coming Soon",
       description: "PDF export functionality will be available in the next update!",
@@ -57,7 +54,7 @@ export const BudgetDashboard = () => {
   };
 
   const totalExpenses = expenses.reduce((sum, expense) => sum + (Number(expense.amount) || 0), 0);
-  const balance = Number(income) - totalExpenses;
+  const currencySymbol = currencies.find(c => c.code === currency)?.symbol || "$";
 
   return (
     <div className="container mx-auto p-6 space-y-8">
@@ -71,102 +68,30 @@ export const BudgetDashboard = () => {
 
       <div className="grid md:grid-cols-2 gap-6">
         <Card className="p-6 space-y-4">
-          <div className="space-y-2 relative">
-            <Label>Select Currency</Label>
-            <Select value={currency} onValueChange={setCurrency}>
-              <SelectTrigger className="w-full hover:bg-muted/50 transition-colors">
-                <SelectValue placeholder="Select currency" />
-              </SelectTrigger>
-              <SelectContent
-                position="popper"
-                className="w-[var(--radix-select-trigger-width)] z-50"
-                align="start"
-                sideOffset={4}
-              >
-                {currencies.map((cur) => (
-                  <SelectItem 
-                    key={cur.code} 
-                    value={cur.code}
-                    className="hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer data-[state=checked]:bg-primary/20 data-[state=checked]:text-primary font-medium"
-                  >
-                    <span className="flex items-center gap-2">
-                      <span className="font-bold">{cur.symbol}</span>
-                      {cur.code}
-                    </span>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label>Monthly Income</Label>
-            <div className="relative">
-              <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="number"
-                value={income}
-                onChange={(e) => setIncome(e.target.value)}
-                className="pl-10"
-                placeholder="Enter your income"
-              />
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <Label>Expenses</Label>
-              <Button variant="outline" size="sm" onClick={handleAddExpense}>
-                <PlusCircle className="h-4 w-4 mr-2" />
-                Add Expense
-              </Button>
-            </div>
-            {expenses.map((expense, index) => (
-              <div key={index} className="grid grid-cols-2 gap-2">
-                <Input
-                  placeholder="Category"
-                  value={expense.category}
-                  onChange={(e) => handleExpenseChange(index, "category", e.target.value)}
-                />
-                <Input
-                  type="number"
-                  placeholder="Amount"
-                  value={expense.amount}
-                  onChange={(e) => handleExpenseChange(index, "amount", e.target.value)}
-                />
-              </div>
-            ))}
-          </div>
+          <CurrencySelector 
+            currency={currency}
+            setCurrency={setCurrency}
+            currencies={currencies}
+          />
+          <IncomeInput 
+            income={income}
+            setIncome={setIncome}
+          />
+          <ExpensesList 
+            expenses={expenses}
+            onAddExpense={handleAddExpense}
+            onExpenseChange={handleExpenseChange}
+          />
         </Card>
 
-        <Card className="p-6 space-y-6">
-          <BudgetChart income={Number(income)} expenses={totalExpenses} />
-          
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-medium">Total Income</span>
-              <span className="text-lg font-bold text-primary">
-                {currencies.find(c => c.code === currency)?.symbol}{income || "0"}
-              </span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-medium">Total Expenses</span>
-              <span className="text-lg font-bold text-destructive">
-                {currencies.find(c => c.code === currency)?.symbol}{totalExpenses}
-              </span>
-            </div>
-            <div className="flex justify-between items-center pt-2 border-t">
-              <span className="text-sm font-medium">Balance</span>
-              <span className={`text-lg font-bold ${balance >= 0 ? "text-green-500" : "text-destructive"}`}>
-                {currencies.find(c => c.code === currency)?.symbol}{balance}
-              </span>
-            </div>
-          </div>
-
-          <Button className="w-full" onClick={handleExportPDF}>
-            <Download className="h-4 w-4 mr-2" />
-            Export PDF
-          </Button>
+        <Card className="p-6">
+          <BudgetSummary 
+            income={Number(income)}
+            totalExpenses={totalExpenses}
+            currency={currency}
+            currencySymbol={currencySymbol}
+            onExportPDF={handleExportPDF}
+          />
         </Card>
       </div>
     </div>
