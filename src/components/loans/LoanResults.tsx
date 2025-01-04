@@ -29,31 +29,16 @@ export const LoanResults = ({ monthlyPayment, totalInterest, totalPayment }: Loa
               </div>
             </div>
             <div className="flex flex-col items-center justify-center mt-4 space-y-2">
-              <svg
-                viewBox="0 0 24 24"
-                className="w-16 h-16 text-primary animate-spin-slow"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-              >
-                <path
-                  d="M3,12 L6,12 M18,12 L21,12 M12,3 L12,6 M12,18 L12,21 M5.636,5.636 L7.757,7.757 M16.243,16.243 L18.364,18.364 M5.636,18.364 L7.757,16.243 M16.243,7.757 L18.364,5.636"
-                  strokeLinecap="round"
+              <div className="relative w-32 h-20">
+                <img
+                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNMzk5LjkgMTY4LjJjLTEuMS0xLjQtMi4yLTIuOC0zLjQtNC4xbC00OC41LTQ4LjVjLTI1LjEtMjUuMS02NS41LTI3LjQtOTMuMS01LjZMMTU2LjIgMjA3LjNjLTIwLjggMTYuNi0zMi44IDQxLjUtMzIuOCA2Ny45djEwMy42YzAgMTcuNyAxNC4zIDMyIDMyIDMyaDMyMGMxNy43IDAgMzItMTQuMyAzMi0zMlYyNzUuMWMwLTI2LjQtMTItNTEuMi0zMi44LTY3LjlsLTc2LjctMzkuMXpNMzM0LjQgMzM2YzAgMjMuNi0xOS4xIDQyLjctNDIuNyA0Mi43cy00Mi43LTE5LjEtNDIuNy00Mi43czE5LjEtNDIuNyA0Mi43LTQyLjdzNDIuNyAxOS4xIDQyLjcgNDIuN3pNMTYwIDM2OGMtMTcuNyAwLTMyLTE0LjMtMzItMzJzMTQuMy0zMiAzMi0zMnMzMiAxNC4zIDMyIDMycy0xNC4zIDMyLTMyIDMyeiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+"
+                  alt="Fast Car"
+                  className="w-full h-full object-contain animate-float text-primary"
                 />
-                <path
-                  d="M4,12 C4,7.582 7.582,4 12,4 C16.418,4 20,7.582 20,12 C20,16.418 16.418,20 12,20 C7.582,20 4,16.418 4,12 Z"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M7,12 C7,9.239 9.239,7 12,7 C14.761,7 17,9.239 17,12"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M9,12 L15,12"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <span className="text-sm font-semibold text-primary">car-loan.co.uk</span>
+              </div>
+              <span className="text-sm font-semibold text-primary bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                car-loan.co.uk
+              </span>
             </div>
           </div>
         )}
