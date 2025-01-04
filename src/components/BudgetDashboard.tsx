@@ -1,102 +1,53 @@
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import { CurrencySelector } from "./budget/CurrencySelector";
-import { IncomeInput } from "./budget/IncomeInput";
-import { ExpensesList } from "./budget/ExpensesList";
-import { BudgetSummary } from "./budget/BudgetSummary";
-
-const currencies = [
-  { code: "USD", symbol: "$" },
-  { code: "EUR", symbol: "€" },
-  { code: "GBP", symbol: "£" },
-  { code: "JPY", symbol: "¥" },
-  { code: "AUD", symbol: "A$" },
-  { code: "CAD", symbol: "C$" },
-  { code: "CHF", symbol: "CHF" },
-  { code: "CNY", symbol: "¥" },
-  { code: "HKD", symbol: "HK$" },
-  { code: "NZD", symbol: "NZ$" },
-  { code: "SEK", symbol: "kr" },
-  { code: "KRW", symbol: "₩" },
-  { code: "SGD", symbol: "S$" },
-  { code: "NOK", symbol: "kr" },
-  { code: "MXN", symbol: "$" },
-  { code: "INR", symbol: "₹" },
-  { code: "RUB", symbol: "₽" },
-  { code: "ZAR", symbol: "R" },
-  { code: "BRL", symbol: "R$" },
-  { code: "AED", symbol: "د.إ" },
-];
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { PoundSterling, Calculator } from "lucide-react";
 
 export const BudgetDashboard = () => {
-  const [currency, setCurrency] = useState("USD");
-  const [income, setIncome] = useState("");
-  const [expenses, setExpenses] = useState<{ category: string; amount: string }[]>([]);
+  const [loanAmount, setLoanAmount] = useState("");
+  const [interestRate, setInterestRate] = useState("");
+  const [loanTerm, setLoanTerm] = useState("");
   const { toast } = useToast();
 
-  const handleAddExpense = () => {
-    setExpenses([...expenses, { category: "", amount: "" }]);
-  };
+  const calculateMonthlyPayment = () => {
+    const principal = Number(loanAmount);
+    const rate = Number(interestRate) / 100 / 12; // Monthly interest rate
+    const months = Number(loanTerm) * 12; // Convert years to months
 
-  const handleExpenseChange = (index: number, field: "category" | "amount", value: string) => {
-    const newExpenses = [...expenses];
-    newExpenses[index][field] = value;
-    setExpenses(newExpenses);
-  };
-
-  const getPersonalizedAdvice = (income: number, totalExpenses: number) => {
-    const balance = income - totalExpenses;
-    const expenseRatio = (totalExpenses / income) * 100;
-    
-    let advice = [];
-    
-    if (expenseRatio > 80) {
-      advice.push("Your expenses are quite high relative to your income. Consider reviewing non-essential expenses to improve your financial health.");
-    } else if (expenseRatio < 50) {
-      advice.push("Great job keeping expenses low! Consider investing or saving the surplus for future goals.");
+    if (!principal || !rate || !months) {
+      toast({
+        title: "Invalid Input",
+        description: "Please fill in all fields with valid numbers.",
+        variant: "destructive",
+      });
+      return;
     }
 
-    if (balance < 0) {
-      advice.push("Warning: You're currently in a deficit. Look for ways to increase income or reduce expenses.");
-    } else if (balance > income * 0.3) {
-      advice.push("You have a healthy savings rate. Consider investing in retirement accounts or emergency funds.");
-    }
+    const monthlyPayment = (principal * rate * Math.pow(1 + rate, months)) / (Math.pow(1 + rate, months) - 1);
+    const totalPayment = monthlyPayment * months;
+    const totalInterest = totalPayment - principal;
 
-    if (expenses.length === 0) {
-      advice.push("Try adding your regular expenses to get a better picture of your budget.");
-    }
-
-    return advice.join("\n");
-  };
-
-  const handleExportPDF = () => {
-    const advice = getPersonalizedAdvice(Number(income), totalExpenses);
     toast({
-      title: "Budget Analysis",
-      description: advice,
+      title: "Loan Calculation Results",
+      description: `Monthly Payment: £${monthlyPayment.toFixed(2)}
+                   Total Interest: £${totalInterest.toFixed(2)}
+                   Total Payment: £${totalPayment.toFixed(2)}`,
       duration: 5000,
     });
-    
-    toast({
-      title: "Coming Soon",
-      description: "PDF export with personalized advice will be available in the next update!",
-      duration: 3000,
-    });
   };
-
-  const totalExpenses = expenses.reduce((sum, expense) => sum + (Number(expense.amount) || 0), 0);
-  const currencySymbol = currencies.find(c => c.code === currency)?.symbol || "$";
 
   return (
     <div className="container mx-auto p-6 space-y-8">
       <div className="text-center space-y-2 relative">
         <span className="px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-          Budget Planner
+          Loan Calculator
         </span>
         <div className="mt-4">
           <h1 className="text-4xl font-black bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent transform hover:scale-105 transition-all duration-700 cursor-pointer">
-            budget-planning.com
+            loan-planning.com
           </h1>
           <div className="h-1 w-48 mx-auto mt-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-full"></div>
           
@@ -110,35 +61,75 @@ export const BudgetDashboard = () => {
             <span className="absolute text-accent animation-delay-4000 animate-float text-2xl" style={{ left: '70%' }}>💵</span>
           </div>
         </div>
-        <p className="text-muted-foreground">Track your income and expenses with style</p>
+        <p className="text-muted-foreground">Calculate your loan payments in GBP</p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
         <Card className="p-6 space-y-4">
-          <CurrencySelector 
-            currency={currency}
-            setCurrency={setCurrency}
-            currencies={currencies}
-          />
-          <IncomeInput 
-            income={income}
-            setIncome={setIncome}
-          />
-          <ExpensesList 
-            expenses={expenses}
-            onAddExpense={handleAddExpense}
-            onExpenseChange={handleExpenseChange}
-          />
+          <div className="space-y-2">
+            <Label>Loan Amount (£)</Label>
+            <div className="relative">
+              <PoundSterling className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+              <Input
+                type="number"
+                value={loanAmount}
+                onChange={(e) => setLoanAmount(e.target.value)}
+                className="pl-10"
+                placeholder="Enter loan amount"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label>Annual Interest Rate (%)</Label>
+            <div className="relative">
+              <Input
+                type="number"
+                value={interestRate}
+                onChange={(e) => setInterestRate(e.target.value)}
+                placeholder="Enter interest rate"
+                step="0.1"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label>Loan Term (Years)</Label>
+            <div className="relative">
+              <Input
+                type="number"
+                value={loanTerm}
+                onChange={(e) => setLoanTerm(e.target.value)}
+                placeholder="Enter loan term"
+              />
+            </div>
+          </div>
+
+          <Button 
+            onClick={calculateMonthlyPayment}
+            className="w-full mt-4"
+          >
+            <Calculator className="mr-2" />
+            Calculate Loan
+          </Button>
         </Card>
 
         <Card className="p-6">
-          <BudgetSummary 
-            income={Number(income)}
-            totalExpenses={totalExpenses}
-            currency={currency}
-            currencySymbol={currencySymbol}
-            onExportPDF={handleExportPDF}
-          />
+          <div className="text-center space-y-4">
+            <h2 className="text-2xl font-bold text-primary">Loan Calculator Guide</h2>
+            <ul className="text-left space-y-2 text-muted-foreground">
+              <li>• Enter the total amount you wish to borrow in GBP</li>
+              <li>• Input the annual interest rate (e.g., 5.5 for 5.5%)</li>
+              <li>• Specify the loan term in years</li>
+              <li>• Click calculate to see your monthly payments</li>
+            </ul>
+            <div className="mt-6 p-4 bg-muted rounded-lg">
+              <p className="text-sm text-muted-foreground">
+                This calculator provides estimates based on a fixed interest rate. 
+                Actual loan terms may vary. Please consult with your lender for precise figures.
+              </p>
+            </div>
+          </div>
         </Card>
       </div>
     </div>
