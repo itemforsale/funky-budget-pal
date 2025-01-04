@@ -30,7 +30,6 @@ export const BudgetChart = ({ income, expenses }: BudgetChartProps) => {
           y={y - 12}
           width={24}
           height={24}
-          className="animate-float"
         >
           <IconComponent className="text-white" size={24} />
         </foreignObject>
@@ -67,15 +66,15 @@ export const BudgetChart = ({ income, expenses }: BudgetChartProps) => {
   };
 
   return (
-    <div className="w-full h-[250px]">
+    <div className="w-full h-[400px]">
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={60}
-            outerRadius={80}
+            innerRadius={80}
+            outerRadius={120}
             paddingAngle={5}
             dataKey="value"
             label={renderCustomizedLabel}
