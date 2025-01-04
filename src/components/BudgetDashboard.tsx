@@ -71,13 +71,18 @@ export const BudgetDashboard = () => {
 
       <div className="grid md:grid-cols-2 gap-6">
         <Card className="p-6 space-y-4">
-          <div className="space-y-2">
+          <div className="space-y-2 relative">
             <Label>Select Currency</Label>
             <Select value={currency} onValueChange={setCurrency}>
               <SelectTrigger className="w-full hover:bg-muted/50 transition-colors">
                 <SelectValue placeholder="Select currency" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent
+                position="popper"
+                className="w-[var(--radix-select-trigger-width)] z-50"
+                align="start"
+                sideOffset={4}
+              >
                 {currencies.map((cur) => (
                   <SelectItem 
                     key={cur.code} 
