@@ -79,7 +79,6 @@ export const BudgetChart = ({ income, expenses }: BudgetChartProps) => {
             dataKey="value"
             label={renderCustomizedLabel}
             labelLine={false}
-            className="animate-spin-slow"
           >
             {data.map((entry, index) => (
               <Cell 
